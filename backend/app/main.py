@@ -1,6 +1,7 @@
 import json
 
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from app.database import Base, SessionLocal, engine
@@ -30,6 +31,14 @@ app = FastAPI(
     title="AI Interview Bot",
     description="ChatGPT-style AI interview chatbot MVP",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
