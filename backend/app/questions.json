@@ -1,0 +1,257 @@
+{
+  "django": {
+    "keywords": ["django", "orm", "model", "migration", "view", "template", "admin", "middleware", "queryset", "serializer"],
+    "questions": [
+      {
+        "question": "What is Django ORM?",
+        "expected_answer": "Django ORM allows developers to interact with the database using Python classes and models instead of writing raw SQL.",
+        "marks": 10,
+        "key_points": ["database", "python classes", "models", "raw sql"],
+        "wrong_concepts": ["frontend", "html", "css", "template design", "ui design"],
+        "follow_up_keywords": ["migration", "queryset", "select_related", "prefetch_related", "model"]
+      },
+      {
+        "question": "What are Django migrations?",
+        "expected_answer": "Django migrations are used to apply model changes to the database schema using migration files.",
+        "marks": 10,
+        "key_points": ["model changes", "database", "schema", "migration files"],
+        "wrong_concepts": ["frontend", "html", "css", "api endpoint"],
+        "follow_up_keywords": ["model", "schema", "database", "makemigrations", "migrate"]
+      },
+      {
+        "question": "What is the difference between function based views and class based views in Django?",
+        "expected_answer": "Function based views are written as Python functions, while class based views use Python classes and provide reusable behavior through inheritance.",
+        "marks": 10,
+        "key_points": ["function", "class", "reusable", "inheritance"],
+        "wrong_concepts": ["database table", "migration", "static file"],
+        "follow_up_keywords": ["generic view", "inheritance", "ListView", "DetailView", "CRUD"]
+      },
+      {
+        "question": "What is a Django model?",
+        "expected_answer": "A Django model is a Python class that represents a database table and defines the structure of the data using fields.",
+        "marks": 10,
+        "key_points": ["python class", "database table", "data structure", "fields"],
+        "wrong_concepts": ["html page", "frontend component", "css"],
+        "follow_up_keywords": ["field", "relationship", "foreign key", "migration", "database"]
+      },
+      {
+        "question": "What is a QuerySet in Django?",
+        "expected_answer": "A QuerySet is a collection of database queries that allows filtering, retrieving, ordering, and manipulating model objects.",
+        "marks": 10,
+        "key_points": ["database queries", "filtering", "retrieving", "model objects"],
+        "wrong_concepts": ["html", "css", "template design"],
+        "follow_up_keywords": ["filter", "exclude", "select_related", "prefetch_related", "lazy loading"]
+      },
+      {
+        "question": "What is Django admin used for?",
+        "expected_answer": "Django admin is a built-in interface used to manage application data such as creating, updating, and deleting model records.",
+        "marks": 10,
+        "key_points": ["built-in interface", "manage data", "create", "update", "delete"],
+        "wrong_concepts": ["api only", "frontend styling", "database engine"],
+        "follow_up_keywords": ["model admin", "superuser", "admin panel", "permissions"]
+      },
+      {
+        "question": "What is middleware in Django?",
+        "expected_answer": "Middleware is a layer that processes requests and responses globally before they reach the view or before the response is returned.",
+        "marks": 10,
+        "key_points": ["request", "response", "global processing", "view"],
+        "wrong_concepts": ["database table", "html template", "css"],
+        "follow_up_keywords": ["authentication", "request", "response", "security", "custom middleware"]
+      },
+      {
+        "question": "What is the role of urls.py in Django?",
+        "expected_answer": "urls.py maps URL patterns to views so Django knows which view should handle a specific request path.",
+        "marks": 10,
+        "key_points": ["url patterns", "views", "request path", "routing"],
+        "wrong_concepts": ["database schema", "model field", "css file"],
+        "follow_up_keywords": ["routing", "path", "include", "view", "endpoint"]
+      },
+      {
+        "question": "What is the difference between select_related and prefetch_related in Django?",
+        "expected_answer": "select_related is used for foreign key and one-to-one relationships using SQL joins, while prefetch_related is used for many-to-many and reverse relationships using separate queries.",
+        "marks": 10,
+        "key_points": ["select_related", "foreign key", "sql join", "prefetch_related", "many-to-many"],
+        "wrong_concepts": ["frontend", "html", "css", "template"],
+        "follow_up_keywords": ["query optimization", "foreign key", "many-to-many", "database query", "performance"]
+      },
+      {
+        "question": "What is a Django template?",
+        "expected_answer": "A Django template is used to generate dynamic HTML by combining static HTML with variables and template tags.",
+        "marks": 10,
+        "key_points": ["html", "dynamic", "variables", "template tags"],
+        "wrong_concepts": ["database table", "migration file", "queryset"],
+        "follow_up_keywords": ["template tags", "context", "render", "html", "jinja"]
+      }
+    ]
+  },
+  "python": {
+    "keywords": ["python", "function", "list", "dictionary", "tuple", "class", "decorator", "exception", "module", "generator"],
+    "questions": [
+      {
+        "question": "What is a Python dictionary?",
+        "expected_answer": "A Python dictionary is a collection of key value pairs used to store and access data by keys.",
+        "marks": 10,
+        "key_points": ["key value pairs", "keys", "store data", "access data"],
+        "wrong_concepts": ["ordered list only", "tuple only", "html"],
+        "follow_up_keywords": ["key", "value", "json", "hash map", "dict"]
+      },
+      {
+        "question": "What is the difference between list and tuple in Python?",
+        "expected_answer": "A list is mutable and can be changed after creation, while a tuple is immutable and cannot be changed.",
+        "marks": 10,
+        "key_points": ["list", "tuple", "mutable", "immutable"],
+        "wrong_concepts": ["dictionary", "set only", "database"],
+        "follow_up_keywords": ["mutable", "immutable", "data structure", "indexing"]
+      },
+      {
+        "question": "What is a function in Python?",
+        "expected_answer": "A function is a reusable block of code that performs a specific task and can accept parameters and return values.",
+        "marks": 10,
+        "key_points": ["reusable", "block of code", "parameters", "return"],
+        "wrong_concepts": ["database table", "html tag", "css class"],
+        "follow_up_keywords": ["argument", "parameter", "return", "lambda", "decorator"]
+      },
+      {
+        "question": "What is the difference between positional arguments and keyword arguments?",
+        "expected_answer": "Positional arguments are passed based on order, while keyword arguments are passed using parameter names.",
+        "marks": 10,
+        "key_points": ["order", "parameter names", "positional", "keyword"],
+        "wrong_concepts": ["list tuple difference", "database query"],
+        "follow_up_keywords": ["args", "kwargs", "function", "parameter"]
+      },
+      {
+        "question": "What is a Python class?",
+        "expected_answer": "A Python class is a blueprint for creating objects that can contain attributes and methods.",
+        "marks": 10,
+        "key_points": ["blueprint", "objects", "attributes", "methods"],
+        "wrong_concepts": ["html class", "css class", "database table only"],
+        "follow_up_keywords": ["object", "inheritance", "method", "constructor", "__init__"]
+      },
+      {
+        "question": "What is exception handling in Python?",
+        "expected_answer": "Exception handling is used to handle runtime errors using try, except, finally, and raise blocks.",
+        "marks": 10,
+        "key_points": ["runtime errors", "try", "except", "finally"],
+        "wrong_concepts": ["syntax highlighting", "html error", "database only"],
+        "follow_up_keywords": ["try", "except", "finally", "raise", "error"]
+      },
+      {
+        "question": "What is a Python decorator?",
+        "expected_answer": "A decorator is a function that wraps another function to extend or modify its behavior without changing the original function code.",
+        "marks": 10,
+        "key_points": ["wraps function", "modify behavior", "extend", "without changing"],
+        "wrong_concepts": ["css decorator", "html wrapper", "database index"],
+        "follow_up_keywords": ["wrapper", "function", "middleware", "authentication"]
+      },
+      {
+        "question": "What is a module in Python?",
+        "expected_answer": "A module is a Python file that contains reusable code such as functions, classes, or variables.",
+        "marks": 10,
+        "key_points": ["python file", "reusable code", "functions", "classes"],
+        "wrong_concepts": ["database table", "api endpoint", "css file"],
+        "follow_up_keywords": ["import", "package", "library", "file"]
+      },
+      {
+        "question": "What is the difference between shallow copy and deep copy?",
+        "expected_answer": "A shallow copy copies the outer object but keeps references to nested objects, while a deep copy copies both outer and nested objects.",
+        "marks": 10,
+        "key_points": ["shallow copy", "deep copy", "nested objects", "references"],
+        "wrong_concepts": ["copy paste text", "database backup", "file upload"],
+        "follow_up_keywords": ["copy", "reference", "nested object", "memory"]
+      },
+      {
+        "question": "What is a generator in Python?",
+        "expected_answer": "A generator is a function that returns values one at a time using yield instead of returning all values at once.",
+        "marks": 10,
+        "key_points": ["yield", "one at a time", "function", "memory efficient"],
+        "wrong_concepts": ["random number only", "database generator", "html generator"],
+        "follow_up_keywords": ["yield", "iterator", "memory", "lazy evaluation"]
+      }
+    ]
+  },
+  "rest_api": {
+    "keywords": ["rest", "api", "http", "endpoint", "serializer", "request", "response", "status", "authentication", "json"],
+    "questions": [
+      {
+        "question": "What is REST API?",
+        "expected_answer": "A REST API allows communication between client and server using HTTP methods like GET, POST, PUT, PATCH, and DELETE.",
+        "marks": 10,
+        "key_points": ["client server", "http methods", "get", "post", "delete"],
+        "wrong_concepts": ["database only", "frontend design", "css"],
+        "follow_up_keywords": ["endpoint", "http", "status code", "json", "authentication"]
+      },
+      {
+        "question": "What is the difference between GET and POST?",
+        "expected_answer": "GET is used to retrieve data from the server, while POST is used to send or create new data on the server.",
+        "marks": 10,
+        "key_points": ["get", "retrieve data", "post", "create data"],
+        "wrong_concepts": ["delete only", "update only", "database migration"],
+        "follow_up_keywords": ["http method", "request body", "query params", "create"]
+      },
+      {
+        "question": "What is the difference between PUT and PATCH?",
+        "expected_answer": "PUT is used to update a full resource, while PATCH is used to update part of a resource.",
+        "marks": 10,
+        "key_points": ["put", "full update", "patch", "partial update"],
+        "wrong_concepts": ["get data", "delete data", "html form only"],
+        "follow_up_keywords": ["update", "partial update", "resource", "http method"]
+      },
+      {
+        "question": "What is an API endpoint?",
+        "expected_answer": "An API endpoint is a specific URL where a client can access a resource or perform an action on the server.",
+        "marks": 10,
+        "key_points": ["url", "resource", "client", "server"],
+        "wrong_concepts": ["database column", "css class", "html tag"],
+        "follow_up_keywords": ["url", "route", "resource", "request"]
+      },
+      {
+        "question": "What are HTTP status codes?",
+        "expected_answer": "HTTP status codes are response codes sent by the server to indicate whether a request was successful, failed, unauthorized, or caused an error.",
+        "marks": 10,
+        "key_points": ["response codes", "success", "failed", "unauthorized", "error"],
+        "wrong_concepts": ["database ids", "html tags", "css codes"],
+        "follow_up_keywords": ["200", "201", "400", "401", "403", "500"]
+      },
+      {
+        "question": "What is the difference between 200, 201, 400, 401, 403, and 500 status codes?",
+        "expected_answer": "200 means success, 201 means created, 400 means bad request, 401 means unauthenticated, 403 means forbidden, and 500 means server error.",
+        "marks": 10,
+        "key_points": ["200 success", "201 created", "400 bad request", "401 unauthenticated", "403 forbidden", "500 server error"],
+        "wrong_concepts": ["database table", "frontend only", "css error"],
+        "follow_up_keywords": ["status code", "authentication", "server error", "bad request"]
+      },
+      {
+        "question": "What is JSON in REST API?",
+        "expected_answer": "JSON is a lightweight data format commonly used to send request and response data between client and server.",
+        "marks": 10,
+        "key_points": ["data format", "request", "response", "client", "server"],
+        "wrong_concepts": ["database engine", "html template", "css file"],
+        "follow_up_keywords": ["request body", "response", "serialization", "payload"]
+      },
+      {
+        "question": "What is authentication in REST API?",
+        "expected_answer": "Authentication verifies the identity of a user or client before allowing access to protected API resources.",
+        "marks": 10,
+        "key_points": ["identity", "user", "client", "protected resources"],
+        "wrong_concepts": ["html validation", "css security", "database migration"],
+        "follow_up_keywords": ["token", "jwt", "session", "authorization", "permission"]
+      },
+      {
+        "question": "What is the difference between authentication and authorization?",
+        "expected_answer": "Authentication checks who the user is, while authorization checks what the user is allowed to access or do.",
+        "marks": 10,
+        "key_points": ["authentication", "who user is", "authorization", "allowed access"],
+        "wrong_concepts": ["same thing only", "database query", "frontend styling"],
+        "follow_up_keywords": ["permission", "role", "token", "access control"]
+      },
+      {
+        "question": "What is pagination in API?",
+        "expected_answer": "Pagination is used to split large API results into smaller pages to improve performance and reduce response size.",
+        "marks": 10,
+        "key_points": ["large results", "smaller pages", "performance", "response size"],
+        "wrong_concepts": ["html page only", "css page", "database migration"],
+        "follow_up_keywords": ["limit", "offset", "page number", "performance"]
+      }
+    ]
+  }
+}
