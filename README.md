@@ -56,6 +56,7 @@ Ensure you have Node.js v24 or newer installed:
 
 ```bash
 cd frontend
+cp env.example .env
 npm install
 npm run dev
 ```
