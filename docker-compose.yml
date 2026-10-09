@@ -11,5 +11,13 @@ services:
       - model-cache:/model-cache
     restart: unless-stopped
 
+  frontend:
+    build: ./frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
 volumes:
   model-cache:
