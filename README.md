@@ -1,7 +1,7 @@
-# AI Interview System — Backend
+# AI Interview System
 
-FastAPI backend for interview sessions, answer scoring, candidate rankings and reports.
-Frontend development is outside this repository's current scope.
+Full-stack application for interview sessions, answer scoring, candidate rankings and reports.
+Includes a FastAPI backend and a Next.js frontend.
 
 ```text
 backend/
@@ -17,6 +17,13 @@ backend/
   requirements.txt
   Dockerfile
   .dockerignore
+frontend/
+  app/
+  public/
+  package.json
+  next.config.ts
+  tsconfig.json
+  Dockerfile
 docker-compose.yml
 .env
 .gitignore
@@ -24,6 +31,8 @@ README.md
 ```
 
 ## Local development
+
+### Backend
 
 Run from the repository root with Python 3.10 or newer:
 
@@ -41,9 +50,21 @@ The database defaults to `backend/interview.db`, independent of the working dire
 Set `DATABASE_URL` in the process environment to override it.
 The existing database has been moved into `backend/` to preserve interview data.
 
+### Frontend
+
+Ensure you have Node.js v24 or newer installed:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend application will be available at: http://localhost:3000
+
 ## Docker
 
-Set `BACKEND_PORT=8000` in the root `.env` file. On a fresh checkout, create
+Set `BACKEND_PORT=8000` and `FRONTEND_PORT=3000` in the root `.env` file. On a fresh checkout, create
 the database file before starting Compose:
 
 ```bash
@@ -51,6 +72,10 @@ touch backend/interview.db
 docker compose up --build -d
 ```
 
+This will build and start both the backend and frontend servers.
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8000/docs
+
 Compose persists the database using the host file and caches the scoring model
 in a named volume. The first startup downloads `all-MiniLM-L6-v2` and requires
-internet access. Stop the service with `docker compose down`.
+internet access. Stop the services with `docker compose down`.
