@@ -33,12 +33,17 @@ app = FastAPI(
     version="1.0.0",
 )
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv() # Automatically searches for .env in current and parent directories
+
+origins_str = os.environ.get("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
+origins = [origin.strip() for origin in origins_str.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

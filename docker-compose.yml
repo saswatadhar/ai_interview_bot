@@ -6,6 +6,7 @@ services:
     environment:
       DATABASE_URL: sqlite:////backend/interview.db
       HF_HOME: /model-cache
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
     volumes:
       - ./backend/interview.db:/backend/interview.db
       - model-cache:/model-cache
