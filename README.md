@@ -29,6 +29,17 @@ docker-compose.yml
 .gitignore
 README.md
 ```
+## Quick Setup
+
+For the fastest way to get everything running via Docker:
+
+```bash
+cp env.example .env
+chmod +x setup.sh
+./setup.sh
+```
+
+This interactive script will configure your ports, set up the environment variables, initialize the database, and build/start all Docker containers.
 
 ## Local development
 

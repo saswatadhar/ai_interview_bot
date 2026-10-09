@@ -13,11 +13,11 @@ export default function InterviewApp() {
   const [view, setView] = useState<ViewState>('start');
   const [candidateName, setCandidateName] = useState('');
   const [sessionId, setSessionId] = useState<number | null>(null);
-  
+
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  
+
   const [finalResult, setFinalResult] = useState<{ total_score: number; recommendation?: string } | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +32,7 @@ export default function InterviewApp() {
   const handleStart = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!candidateName.trim()) return;
-    
+
     setIsTyping(true);
     try {
       const res = await fetch(`${API_BASE}/interview/start`, {
@@ -41,7 +41,7 @@ export default function InterviewApp() {
         body: JSON.stringify({ candidate_name: candidateName }),
       });
       const data = await res.json();
-      
+
       setSessionId(data.session_id);
       setMessages([{ id: Date.now().toString(), sender: 'bot', text: data.bot_message }]);
       setView('chat');
@@ -68,9 +68,9 @@ export default function InterviewApp() {
         body: JSON.stringify({ message: userMessageText }),
       });
       const data = await res.json();
-      
+
       setMessages(prev => [...prev, { id: Date.now().toString(), sender: 'bot', text: data.bot_message }]);
-      
+
       if (data.is_finished) {
         setTimeout(() => fetchResult(sessionId), 1500); // Small delay to read the last message
       }
@@ -98,7 +98,7 @@ export default function InterviewApp() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-50 flex flex-col items-center justify-center p-4 selection:bg-indigo-500/30">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-neutral-950 to-neutral-950 -z-10" />
-      
+
       <AnimatePresence mode="wait">
         {view === 'start' && (
           <motion.div
@@ -118,7 +118,7 @@ export default function InterviewApp() {
               <p className="text-neutral-400 text-center mb-8 text-sm">
                 Ready to test your skills? Enter your name to begin the session.
               </p>
-              
+
               <form onSubmit={handleStart} className="space-y-4">
                 <div>
                   <input
@@ -171,21 +171,19 @@ export default function InterviewApp() {
                   key={msg.id}
                   className={`flex gap-3 ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
                 >
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
-                    msg.sender === 'bot' ? 'bg-indigo-500/20 text-indigo-400' : 'bg-neutral-800 text-neutral-300'
-                  }`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.sender === 'bot' ? 'bg-indigo-500/20 text-indigo-400' : 'bg-neutral-800 text-neutral-300'
+                    }`}>
                     {msg.sender === 'bot' ? <Bot size={16} /> : <User size={16} />}
                   </div>
-                  <div className={`max-w-[80%] rounded-2xl px-5 py-3 ${
-                    msg.sender === 'bot' 
-                      ? 'bg-neutral-800/80 text-neutral-200 border border-white/5 rounded-tl-sm' 
-                      : 'bg-indigo-600 text-white rounded-tr-sm'
-                  }`}>
+                  <div className={`max-w-[80%] rounded-2xl px-5 py-3 ${msg.sender === 'bot'
+                    ? 'bg-neutral-800/80 text-neutral-200 border border-white/5 rounded-tl-sm'
+                    : 'bg-indigo-600 text-white rounded-tr-sm'
+                    }`}>
                     <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
                   </div>
                 </motion.div>
               ))}
-              
+
               {isTyping && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-3">
                   <div className="w-8 h-8 bg-indigo-500/20 text-indigo-400 rounded-full flex items-center justify-center shrink-0">
@@ -230,37 +228,37 @@ export default function InterviewApp() {
             animate={{ opacity: 1, scale: 1 }}
             className="w-full max-w-md text-center"
           >
-             <div className="bg-neutral-900/50 backdrop-blur-xl border border-white/10 p-10 rounded-3xl shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50" />
-                
-                <div className="w-20 h-20 bg-gradient-to-tr from-indigo-500 to-purple-500 text-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_40px_rgba(99,102,241,0.4)]">
-                  <Trophy size={36} />
-                </div>
-                
-                <h2 className="text-2xl font-bold mb-2">Interview Complete</h2>
-                <p className="text-neutral-400 mb-8">Great job, {candidateName}!</p>
-                
-                <div className="bg-black/40 rounded-2xl p-6 border border-white/5 mb-8">
-                  <p className="text-sm text-neutral-400 mb-1">Final Score</p>
-                  <p className="text-5xl font-black bg-gradient-to-b from-white to-neutral-500 bg-clip-text text-transparent">
-                    {finalResult.total_score}
-                  </p>
-                  <p className="text-xs text-neutral-500 mt-2">Out of 100</p>
-                </div>
+            <div className="bg-neutral-900/50 backdrop-blur-xl border border-white/10 p-10 rounded-3xl shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50" />
 
-                <button
-                  onClick={() => {
-                    setView('start');
-                    setCandidateName('');
-                    setSessionId(null);
-                    setMessages([]);
-                    setFinalResult(null);
-                  }}
-                  className="w-full bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl px-4 py-3 transition-all"
-                >
-                  Start New Interview
-                </button>
-             </div>
+              <div className="w-20 h-20 bg-gradient-to-tr from-indigo-500 to-purple-500 text-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_40px_rgba(99,102,241,0.4)]">
+                <Trophy size={36} />
+              </div>
+
+              <h2 className="text-2xl font-bold mb-2">Interview Complete</h2>
+              <p className="text-neutral-400 mb-8">Great job, {candidateName}!</p>
+
+              <div className="bg-black/40 rounded-2xl p-6 border border-white/5 mb-8">
+                <p className="text-sm text-neutral-400 mb-1">Final Score</p>
+                <p className="text-5xl font-black bg-gradient-to-b from-white to-neutral-500 bg-clip-text text-transparent">
+                  {finalResult.total_score}
+                </p>
+                <p className="text-xs text-neutral-500 mt-2">Out of 100</p>
+              </div>
+
+              <button
+                onClick={() => {
+                  setView('start');
+                  setCandidateName('');
+                  setSessionId(null);
+                  setMessages([]);
+                  setFinalResult(null);
+                }}
+                className="w-full bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl px-4 py-3 transition-all"
+              >
+                Start New Interview
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
