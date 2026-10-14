@@ -25,7 +25,7 @@ def calculate_semantic_similarity(candidate_answer: str, expected_answer: str):
     if not api_key:
         raise ScoringError("GEMINI_API_KEY is not configured.")
 
-    model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
     payload = {
         "systemInstruction": {"parts": [{"text": (
             "Evaluate the technical correctness and semantic agreement of a candidate "

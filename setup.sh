@@ -25,7 +25,7 @@ if [ -z "$GEMINI_API_KEY" ]; then
     read -r -s -p "Enter Gemini API key: " GEMINI_API_KEY
     echo ""
 fi
-GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.5-flash}
+GEMINI_MODEL=${GEMINI_MODEL:-gemini-3.8-flash}
 
 echo "Generating root .env..."
 cat > .env <<EOF
