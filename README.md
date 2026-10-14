@@ -51,6 +51,8 @@ Run from the repository root with Python 3.10 or newer:
 python3 -m venv venv
 source venv/bin/activate
 pip install -r backend/requirements.txt
+cp backend/env.example backend/.env
+# Set GEMINI_API_KEY in backend/.env
 cd backend
 uvicorn app.main:app --reload
 ```
@@ -88,6 +90,10 @@ This will build and start both the backend and frontend servers.
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:8000/docs
 
-Compose persists the database using the host file and caches the scoring model
-in a named volume. The first startup downloads `all-MiniLM-L6-v2` and requires
-internet access. Stop the services with `docker compose down`.
+Compose persists the database using the host file. Configure `GEMINI_API_KEY`
+and optionally `GEMINI_MODEL` in `backend/.env` before starting. Answer scoring
+calls the Gemini API via HTTP; no local model, PyTorch, CUDA, or model download
+is required. Internet access and Gemini API quota are required. The existing
+55% semantic, 30% keyword, and 15% answer-length scoring weights are retained.
+Failed scoring requests return HTTP 503 without advancing the interview.
+Stop the services with `docker compose down`.

@@ -2,6 +2,6 @@ __pycache__/
 *.py[cod]
 *.db
 *.db-*
-# .env (removed so it can be copied into the container)
+.env
 venv/
 .venv/

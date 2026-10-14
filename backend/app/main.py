@@ -22,7 +22,7 @@ from app.schemas import (
     StartInterviewRequest,
     StartInterviewResponse,
 )
-from app.scoring import calculate_score
+from app.scoring import ScoringError, calculate_score
 
 
 Base.metadata.create_all(bind=engine)
@@ -248,14 +248,18 @@ def send_message(
             bot_message = "No active question found. Interview finished."
             session.is_finished = True
         else:
-            score = calculate_score(
-                candidate_answer=payload.message,
-                expected_answer=question_data["expected_answer"],
-                marks=question_data["marks"],
-                key_points=question_data.get("key_points", []),
-                wrong_concepts=question_data.get("wrong_concepts", []),
-                follow_up_keywords=question_data.get("follow_up_keywords", []),
-            )
+            try:
+                score = calculate_score(
+                    candidate_answer=payload.message,
+                    expected_answer=question_data["expected_answer"],
+                    marks=question_data["marks"],
+                    key_points=question_data.get("key_points", []),
+                    wrong_concepts=question_data.get("wrong_concepts", []),
+                    follow_up_keywords=question_data.get("follow_up_keywords", []),
+                )
+            except ScoringError as exc:
+                db.rollback()
+                raise HTTPException(status_code=503, detail=str(exc)) from None
 
             session.total_score = (session.total_score or 0) + score
 
