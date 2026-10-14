@@ -97,3 +97,6 @@ is required. Internet access and Gemini API quota are required. The existing
 55% semantic, 30% keyword, and 15% answer-length scoring weights are retained.
 Failed scoring requests return HTTP 503 without advancing the interview.
 Stop the services with `docker compose down`.
+Compose persists the database using the host file and caches the scoring model
+in a named volume. The first startup downloads `all-MiniLM-L6-v2` and requires
+internet access. Stop the services with `docker compose down`.

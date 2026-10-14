@@ -31,6 +31,8 @@ echo "Generating root .env..."
 cat > .env <<EOF
 GEMINI_API_KEY=${GEMINI_API_KEY}
 GEMINI_MODEL=${GEMINI_MODEL}
+echo "Generating root .env..."
+cat > .env <<EOF
 BACKEND_PORT=${BACKEND_PORT}
 FRONTEND_PORT=${FRONTEND_PORT}
 CORS_ORIGINS=http://${SERVER_HOST}:${FRONTEND_PORT},http://127.0.0.1:${FRONTEND_PORT},http://localhost:${FRONTEND_PORT}
